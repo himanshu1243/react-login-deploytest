@@ -7,7 +7,8 @@ const password=(props)=>
     <h1>Change Password</h1>
 <div className="outer">
   <div >
-      <label><b>Username:</b></label>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <label><b>Username:</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required onChange={props.createUsername} ></input>
       </div>
       <br></br>

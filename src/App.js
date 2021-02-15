@@ -1,7 +1,7 @@
 
 
 import { Component } from 'react';
-
+import './App.css';
 import {BrowserRouter} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row } from 'react-bootstrap';
@@ -12,7 +12,7 @@ class App extends Component {
   
   return(
     <BrowserRouter>
-    <div>
+    <div >
       <Container>
       <Row>
       <Loader/>

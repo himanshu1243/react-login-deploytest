@@ -8,6 +8,7 @@ const login=(props)=>
   <h1>Login</h1>
 <div className="outer">
   <div >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <label ><b>Username:</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required  onChange={props.enterUsername}></input>
       </div>

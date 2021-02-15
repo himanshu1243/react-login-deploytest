@@ -3,11 +3,14 @@ import './Registration.css'
 import history from '../../History'
 const register=(props)=>
 (
-<div>
+  
+<div Classname="styli+ng">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 <div className="heighttop">
 <h1>Registration</h1>
 </div>
 <div className="outer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
  
       <form >
       <p> I am {props.name} and {props.password}</p>

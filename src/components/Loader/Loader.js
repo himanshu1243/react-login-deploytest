@@ -4,6 +4,7 @@ import Password from '../Password/Password';
 import Login from '../Login/Login';
 import {Route,Router} from 'react-router-dom'
 import history from '../../History' 
+import axios from 'axios';
 class Loader extends Component
 {
     state={
@@ -44,8 +45,13 @@ class Loader extends Component
     componentDidMount() {
         // this.state.Username=localStorage.getItem('Username')
         // this.state.Password=localStorage.getItem('Password')
-        this.setState({Username:localStorage.getItem('Username'),
-                        Password:localStorage.getItem('Password')})
+        // this.setState({Username:localStorage.getItem('Username'),
+        //                 Password:localStorage.getItem('Password')})
+        axios.get('https://jsonplaceholder.typicode.com/users').then(
+            response=>{
+                console.log(response)
+            }
+        )
 }
     logHandler=()=>
     {
