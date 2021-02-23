@@ -11,7 +11,8 @@ class Loader extends Component
         Username:"",
         Password:"",
         loggedUsername:"",
-        loggedPassword:""
+        loggedPassword:"",
+        logg:[]
     }
     createUsernameHandler=(event)=>{
       this.setState({Username:event.target.value})
@@ -33,24 +34,30 @@ class Loader extends Component
         // console.log(this.state)
               
     }
-    formSubmitHandle=()=>
+    formSubmitHandle=(name)=>
     {
-        console.log(this.state)
-       const{Username,Password}=this.state;
-       localStorage.setItem('Username', Username);
-       localStorage.setItem('Password',Password);
-    // localStorage.setItem('document',JSON.stringify(this.state));
-
+    //     console.log(this.state)
+    //    const{Username,Password}=this.state;
+    //    localStorage.setItem('Username',Username);
+    //    localStorage.setItem('Password',Password);
+    // // localStorage.setItem('document',JSON.stringify(this.state));
+        //  this.setState({Username:name})
+         
     }
     componentDidMount() {
         // this.state.Username=localStorage.getItem('Username')
         // this.state.Password=localStorage.getItem('Password')
-        // this.setState({Username:localStorage.getItem('Username'),
-        //                 Password:localStorage.getItem('Password')})
+        this.setState({Username:localStorage.getItem('Username'),
+                        Password:localStorage.getItem('Password')})
         axios.get('https://jsonplaceholder.typicode.com/users').then(
             response=>{
-                console.log(response)
+                this.setState({Username:response.data.slice(0, 1)[0].username})
+                this.setState({Password:response.data.slice(0, 1)[0].email}) 
+                console.log(this.state.Password)
+                console.log(response.data)
+      
             }
+           
         )
 }
     logHandler=()=>
@@ -59,8 +66,7 @@ class Loader extends Component
         
      if(this.state.Username)
      {
-        
-         
+           
          if(this.state.Username===this.state.loggedUsername)
          {
             
@@ -87,8 +93,11 @@ class Loader extends Component
   
     render()
     {
+    
+       
         return(
-    <div>
+         
+    <div>           
          <Router history={history}>
     <Route path="/" exact component={Login}>
           <Login
@@ -100,12 +109,19 @@ class Loader extends Component
     </Route>
     <Route path="/passwordchange" component={Password}/>
     <Route path="/register" component={Registration} >
-            <Registration 
-            submit={this.formSubmitHandle}
+            <Registration
+                const name={this.state.logg.map(post=>
+                <li>
+                    {post.name}
+                </li>
+                
+                )}
+            submit={this.formSubmitHandle(this.name)}
             createUsername={this.createUsernameHandler}
-            name={this.state.Username}
             createPassword={this.createPasswordHandler} 
-            password={this.state.Password}/>
+            password={this.state.Password}
+            // name={this.state.Username}/>
+            />
         </Route>
         </Router>
     </div>
